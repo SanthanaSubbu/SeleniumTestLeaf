@@ -23,6 +23,15 @@ public class DeleteLead {
 		 Thread.sleep(2000);
 		 driver.findElement(By.xpath("//a[contains(text(), 'Delete')]")).click();
 		 Thread.sleep(2000);
+		 driver.findElement(By.linkText("Find Leads")).click();//10767
+		 driver.findElement(By.name("id")).sendKeys("10767");
+		 Thread.sleep(2000);
+		 driver.findElement(By.xpath("//button[contains(text(), 'Find Leads')]")).click();
+		 Thread.sleep(2000);		
+		 String message =driver.findElement(By.xpath("//div[@class='x-paging-info']")).getText();
+		 boolean isRecord = message.equals("No records to display");
+		 System.out.println("Record not found is  "+isRecord);
+		 driver.close();		 
 		 
 	}
 
