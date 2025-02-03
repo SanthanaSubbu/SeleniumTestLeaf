@@ -7,9 +7,9 @@ public class Elements extends RadioButton{
 		e.click();
 		e.setText();
 		e.submit();
-		e.getText();
 		e.clickCheckButton();
 		e.selectRadioButton();
+		e.getText();
 
 	}
 
