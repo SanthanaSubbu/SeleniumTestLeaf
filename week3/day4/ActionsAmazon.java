@@ -9,11 +9,14 @@ import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsAmazon {
 
@@ -47,16 +50,19 @@ public class ActionsAmazon {
          File destination = new File("C:/Users/santh/FinalChallenge/Training/screenshots/product.png");
          FileUtils.copyFile(screenshot, destination);
          //Add the product to cart
+         Thread.sleep(2000);
+          WebElement cart=driver.findElement(By.xpath("(//input[@id='add-to-cart-button'])[2]"));
         
-         WebElement cart = driver.findElement(By.id("add-to-cart-button"));
          Actions a = new Actions(driver);
          a.moveToElement(cart).click().perform();
-         Thread.sleep(2000);
-         String subTotal =driver.findElement(By.xpath("//span[@class='a-size-base-plus a-color-price a-text-bold']")).getText();
+         
+         Thread.sleep(3000);
+         String subTotal =driver.findElement(By.xpath("//span[contains(@class,'a-size-base-plus a-color-price')]//span[1]")).getText();
          System.out.println(cartValue.toString());
          System.out.println(subTotal.toString());
          boolean isMatch = subTotal.contains(cartValue);
          System.out.println("Product total verified: "+isMatch);
+         driver.quit();
          
 	}
 
