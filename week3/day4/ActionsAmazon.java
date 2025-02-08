@@ -57,11 +57,12 @@ public class ActionsAmazon {
          a.moveToElement(cart).click().perform();
          
          Thread.sleep(3000);
-         String subTotal =driver.findElement(By.xpath("//span[contains(@class,'a-size-base-plus a-color-price')]//span[1]")).getText();
+         String subTotal =driver.findElement(By.id("attach-accessory-cart-subtotal")).getText();
          System.out.println(cartValue.toString());
          System.out.println(subTotal.toString());
          boolean isMatch = subTotal.contains(cartValue);
          System.out.println("Product total verified: "+isMatch);
+         Thread.sleep(3000);
          driver.quit();
          
 	}
